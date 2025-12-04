@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Convertor - Arshit rupani</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/366351d6ff.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Currency convertor</h2>
+        <br>
+        <form action="/submit">
+            <p>Enter the number : </p>
+            <input type="text" id="amount" name="amount" required>
+        </form>
+
+        <br>
+
+        <section class="middle_part">
+            
+            <div class="dropdown">
+                
+                <div class="fromm">
+                    <p>From</p>
+                    <div class="from">
+                        <img src="https://flagsapi.com/US/flat/64.png" alt="">
+                        <select name="currency" id="currency">
+                            <option value="USD">USD</option>
+                            <option value="INR">INR</option>
+                            <option value="EUR">EUR</option>
+                            <option value="AUD">AUD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                
+                <div class="too">
+                    <p>To</p>
+                    <div class="to">
+                        <img src="https://flagsapi.com/IN/flat/64.png" alt="">
+                        <select name="currency" id="currency">
+                            <option value="USD">USD</option>
+                            <option value="INR" selected>INR</option>
+                            <option value="EUR">EUR</option>
+                            <option value="AUD">AUD</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <p class="text">1 USD = 80 INR</p>
+
+        <div class="buttons">
+            <button type="submit">Get exchange</button>
+        </div>
+
+    </div>
+
+    <script src="codes.js"></script>
+    <script src="script.js"></script>   
+
+</body>
+
+</html>

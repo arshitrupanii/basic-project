@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+        <!-- navbar -->
+        <nav class="navbar">
+            <div><span class="logo-name cursor">Kandan</span></div>
+            <div><button class="add-btn cursor">Add new task</button></div>
+        </nav>
+        <!-- end navbar -->
+
+        <!-- todo section -->
+        <div class="board">
+
+            <!-- todo card col -->
+            <div class="tasks-cols" id="todo">
+                <div class="tasks-header">
+                    <div>To do</div>
+                    <div id="todo-count">0</div>
+                </div>
+            </div>
+
+            <!-- progress card col -->
+            <div class="tasks-cols" id="progress">
+                <div class="tasks-header">
+                    <div>Progress</div>
+                    <div id="progress-count">0</div>
+                </div>
+            </div>
+
+            <!-- done card col -->
+            <div class="tasks-cols" id="done">
+                <div class="tasks-header">
+                    <div>Done</div>
+                    <div id="done-count">0</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+    <!-- add new task popup -->
+    <section class="new-task-container">
+        <form action="" class="new-task-form" >
+            <div>
+                <label for="">Title: </label>
+                <input type="text" name="title" id="add-Title" required>
+            </div>
+
+            <div>
+                <label for="">Description: </label>
+                <textarea name="desc" id="add-Desc" required></textarea>
+            </div>
+
+            <input type="submit" value="ADD TASK" id="add-Submit">
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

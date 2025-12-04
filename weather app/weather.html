@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #89f7fe, #66a6ff);
+        animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    .weather-container {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        animation: slideIn 0.8s ease-out;
+    }
+    @keyframes slideIn {
+        from { transform: translateY(-30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    input {
+        padding: 12px;
+        margin: 15px 0;
+        width: 85%;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        transition: all 0.3s;
+        outline: none;
+        font-size: 16px;
+    }
+    input:focus {
+        border-color: #007BFF;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    }
+    button {
+        padding: 12px 20px;
+        background: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+    button:hover {
+        background: #0056b3;
+        transform: scale(1.05);
+    }
+    .weather-info {
+        margin-top: 20px;
+        font-size: 18px;
+        opacity: 0;
+        animation: fadeIn 1s ease-in forwards 0.5s;
+    }
+    .weather-info p {
+        margin: 5px 0;
+    }
+</style>
+
+
+<body>
+    <div class="weather-container">
+        <form action="" id="my_form">
+            <h2>🌤 Weather App</h2>
+            <input type="text" id="city" placeholder="Enter city name" required>
+            <button id="searchBtn">🔍 Search</button>
+        </form>
+        <div class="weather-info">
+            <h3 id="cityName">City Name</h3>
+            <p id="temperature">Temperature: --°C</p>
+            <p id="description">Description: --</p>
+            <p id="humidity">Humidity: --%</p>
+            <p id="windSpeed">Wind Speed: -- km/h</p>
+            <p id="pressure">Pressure: -- hPa</p>
+            <p id="visibility">Visibility: -- km</p>
+        </div>
+    </div>
+</body>
+
+<script>
+    let city = document.querySelector('#city');
+    let city_name = document.querySelector('#cityName');
+    let form = document.querySelector('#my_form');
+    let temperature = document.querySelector('#temperature');
+    let description = document.querySelector('#description');
+    let humidity = document.querySelector('#humidity');
+    let windSpeed = document.querySelector('#windSpeed');
+    let pressure = document.querySelector('#pressure');
+    let visibility = document.querySelector('#visibility');
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        let data = `http://api.weatherapi.com/v1/current.json?key=e68f4520e7ca48afb0f24545232603&q=${city.value}`;
+
+        let res = await fetch(data)
+            .then(response => response.json())
+            .catch(err => console.log(err));
+
+        if (res.error) {
+            alert('City not found');
+            return;
+        }
+
+        city_name.textContent = `City Name : ${res.location.name},${res.location.country}`;
+        temperature.textContent = `Temperature: -- ${res.current.temp_c}°C`;
+        description.textContent = `Description: -- ${res.current.condition.text}`;
+        humidity.textContent = `Humidity: -- ${res.current.humidity}%`;
+        windSpeed.textContent = `Wind Speed: -- ${res.current.wind_kph} km/h`;
+        pressure.textContent = `Pressure: -- ${res.current.pressure_mb} hPa`;
+        visibility.textContent = `Visibility: -- ${res.current.vis_km} km`;
+
+    })
+
+</script>
+
+</html>

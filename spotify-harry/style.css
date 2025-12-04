@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --dark-bg: #121212;
+    --lighter-dark: #1f1f1f;
+    --light-text: gray;
+    --primary-text: white;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* comment is made by tabnine */
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent body from scrolling */
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent container from scrolling */
+}
+.left {
+    width: 25vw;
+    height: 100%; /* Full height of the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    position: fixed; /* Fix the left sidebar */
+    left: 0;
+    top: 0;
+    /* Hide scrollbar for Firefox */
+    scrollbar-width: none;
+
+    /* Hide scrollbar for WebKit-based browsers (Chrome, Safari, Edge) */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Optional: Ensure -ms-overflow-style is set to none for IE 10+ */
+    -ms-overflow-style: none;
+}
+
+
+.right {
+    margin-top: 10px;
+    margin-left: 25vw; /* Match the width of .left */
+    width: 75vw; /* Remaining width */
+    height: auto; /* Full viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--dark-bg);
+    box-sizing: border-box; /* Include padding in the width calculation */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.home-logo {
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 110px;
+}
+
+.home, ._library {
+    padding: 10px;
+    margin: 12px;
+}
+
+._library {
+    height: auto;
+    position: relative;
+    color: white;
+}
+
+.home ul {
+    margin-top: 30px;
+    list-style-type: none;
+    margin-left: 10px;
+}
+
+.home ul li {
+    margin: 16px 0 10px;
+    width: 32px;
+    display: flex;
+}
+
+.home_text {
+    margin-left: 20px;
+    color: black;
+    font-weight: 800;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+}
+
+.heading {
+    justify-content: space-between;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    height: 30px;
+}
+
+.heading h3 {
+    font-weight: 800;
+    width: auto;
+    margin-left: 16px;
+    color: gray;
+}
+
+.heading img {
+    width: 32px;
+    filter: invert(0%) sepia(0%) saturate(0%) brightness(70%) contrast(80%);
+}
+
+.create {
+    background-color: var(--lighter-dark);
+    padding: 18px;
+    font-weight: 700;
+    color: white;
+}
+
+.create p {
+    margin: 15px 0 22px;
+    font-size: small;
+}
+
+.create button {
+    background-color: white;
+    width: 130px;
+    color: black;
+    font-weight: bold;
+    height: 30px;
+    border: none;
+    border-radius: 25px;
+}
+
+.footer {
+    margin-top: 15px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footer a, .footer span {
+    margin: 0 5px;
+    color: gray;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.footer_button button {
+    margin: 0 5px;
+    width: 105px;
+    height: 35px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 25px;
+    color: black;
+}
+
+.footer_button span {
+    font-size: medium;
+    font-weight: bold;
+    color: black;
+}
+
+.left-right-sider {
+    align-items: center;
+}
+
+.left-right-sider button {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    border: 1px solid var(--lighter-dark);
+    margin-left: 5px;
+    height: 37px;
+    border-radius: 50px;
+    padding: 10px;
+    align-items: center;
+}
+
+.left-right-sider img {
+    width: 17px;
+    align-items: center;
+    justify-content: center;
+}
+
+.upper_nav {
+    width: 74%;
+    box-sizing: border-box;
+    position: fixed;
+    justify-content: space-between;
+
+}
+
+.sign button {
+    background-color: white;
+    color: black;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 25px;
+    height: 42px;
+    width: 100px;
+}
+
+.cards {
+    justify-content: center;
+    object-fit: cover;
+    width: auto;
+    background-color: var(--lighter-dark);
+    height: auto;
+    margin-top: 60px;
+    border-radius: 10px;
+    padding: 12px 18px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h2 {
+    color: white;
+}
+
+.header a {
+    color: gray;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.card {
+    cursor: pointer;
+    margin-top: 35px;
+    width: 195px;
+    padding: 10px 5px;
+    margin-right: auto;
+    height: 250px;
+    border-radius: 15px;
+    background-color: #252525;
+}
+
+.card img {
+    border-radius: 15px;
+    width: 190px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card h4 {
+    margin-top: 10px;
+    color: white;
+}
+
+.card_container {
+    width: 72vw;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card p {
+    margin-top: 5px;
+    color: gray;
+    width: 180px;
+    height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: small;
+}
+
+
+.songlist ol {
+    margin: 20px 0px;
+}
+
+.songlist ol li{ 
+    list-style-type: none;
+    margin: 10px 0px ;
+    border: 1px solid rgb(101, 101, 101,0.3);
+    border-radius: 10px;
+    padding: 0px 5px;
+    justify-content: space-between;
+}
+
+.songlist ol li img{
+    margin: 10px;
+    object-fit: cover;
+    border-radius: 10px;
+    width: 58px;
+}
+
+.playbar{
+    gap: 25px;
+    background-color: #252525;
+    width: 72%;
+    border: 1px solid rgb(62, 62, 62);
+    border-radius: 15px;
+    margin-left: 15px;
+    position: fixed;
+    bottom: 25px;
+    height: 50px;
+}
+
+.playbar img{
+    position: relative;
+    width: 19px;
+    bottom: 5px;
+}
+
+.seekbar{
+    width: 96%;
+    height: 1px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    position: absolute;
+    bottom: 9px;
+    /* margin-left: 15px; */
+}
+
+.circle{
+    width: 10px;
+    height: 10px;
+    /* border: 1px solid white; */
+    position: absolute;
+    top: -5px;
+    left: -3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: left 0.5s;
+}
+
+.songinfo{
+    margin-left: 40px;
+    width: auto;
+    font-size: 17px;
+    color: white;
+    position: fixed;
+    bottom: 44px;
+    height: 30px;
+    z-index: 1;
+}
+
+.songinfo img{
+    margin-right: 10px;
+}
+
+.humburg{
+    display: none !important;
+
+}
+
+.cross{
+    display: none !important;
+}
+
+.songduration{
+    height: 20px;
+    width: 40px;
+    position: fixed;
+    right: 35px;
+    bottom: 47px;
+    font-size: medium;
+    color: white;
+}
+
+@media (max-width: 1200px){
+    .left{
+        position:absolute;
+        left: -100%;
+        transition: all 0.5s;   
+        width: 400px;
+    }
+
+    .home_{
+        top: 300px;
+    }
+
+    .playbar{
+        width: 95%;
+    }
+
+    .right{
+        width: 100%;
+        margin-left: 0px;
+        transition: all 0.5s;
+    }
+
+    .card_container{
+        width: 100%;
+    }
+
+    .upper_nav{
+        width: 97%;
+    }
+
+    .humburg{
+        display: block !important;
+    }
+
+    .back, .next_button{
+        display: none !important    ;
+    }
+
+}
