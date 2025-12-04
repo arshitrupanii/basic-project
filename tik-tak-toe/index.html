@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tik tak toe - Arshit rupani</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        color: white;
+        font-family: monospace;
+        background: linear-gradient(135deg, #0a0a2a, #0f1a55);
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        padding-top: 1%;
+        padding-bottom: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: linear-gradient(135deg, #0a0a2a, #0f1a55);
+    }
+
+    .box-container {
+        display: grid;
+        grid-template-columns: repeat(3, 120px);
+        grid-template-rows: repeat(3, 120px);
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid white;
+        font-size: 1rem;
+    }
+
+    .score {
+        display: grid;
+        grid-template-columns: 100px 100px;
+        gap: 18px;
+    }
+
+    .a-player-name,
+    .b-player-name {
+        text-decoration: underline;
+        overflow: hidden;
+    }
+
+    .a-player-name,
+    .b-player-name,
+    .a-player-score,
+    .b-player-score {
+        padding: 5px;
+        /* border: 2px solid white; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .reset-btn {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .reset-btn button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #0f1a55;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .reset-btn button:hover {
+        background-color: #1e2a88;
+    }
+
+    .img-text {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1 style="font-size: 35px;">Tic Tac Toe</h1>
+
+        <h3 class="turn">Turn for O 😊</h3>
+
+        <div class="box-container">
+            <div class="box">
+                <img class="img-text" src="asset/blank1.png" alt="">
+            </div>
+            <div class="box">
+                <img class="img-text" src="asset/blank1.png" alt="">
+            </div>
+            <div class="box">
+                <img class="img-text" src="asset/blank1.png" alt="">
+            </div>
+            <div class="box">
+                <img class="img-text" src="asset/blank1.png" alt="">
+            </div>
+            <div class="box">
+                <img class="img-text" src="asset/blank1.png" alt="">
+            </div>
+            <div class="box">
+                <img class="img-text" src="asset/blank1.png" alt="">
+            </div>
+            <div class="box">
+                <img class="img-text" src="asset/blank1.png" alt="">
+            </div>
+            <div class="box">
+                <img class="img-text" src="asset/blank1.png" alt="">
+            </div>
+            <div class="box">
+                <img class="img-text" src="asset/blank1.png" alt="">
+            </div>
+        </div>
+
+        <!-- <div class="score">
+            <div class="a-player-name">Player 1</div>
+            <div class="b-player-name">Player 2</div>
+
+            <div class="a-player-score">0</div>
+            <div class="b-player-score">0</div>
+        </div> -->
+
+        <div style="margin-top: 30px;" class="reset-btn">
+            <button class="btn">Reset</button>
+        </div>
+
+    </div>
+
+    <script>
+        const imgs = document.querySelectorAll(".img-text")
+        const turns = document.querySelector(".turn")
+        const reset = document.querySelector(".reset-btn")
+        const a_player_score = document.querySelector(".a-player-score")
+        const b_player_score = document.querySelector(".b-player-score")
+        let turn = "O";
+        let a_score = 0;
+        let b_score = 0;
+
+        const board = [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
+        ];
+
+        imgs.forEach((img, index) => {
+
+            img.addEventListener("click", function () {
+                const row = Math.floor(index / 3);
+                const col = index % 3;
+
+                console.log(board);
+
+                if (img.src.includes("zero.png") || img.src.includes("cross.png")) return;
+
+                if (turn == "X") {
+                    img.src = "asset/cross.png"
+                    turns.textContent = `Turn for O 😊`
+                    board[row][col] = "X";
+                    turn = "O"
+
+                } else {
+                    img.src = "asset/zero.png"
+                    turns.textContent = `Turn for X 😊`
+                    board[row][col] = "O";
+                    turn = "X"
+                }
+
+                checkWinner()
+
+            })
+        })
+
+        function checkWinner() {
+            const wins = [
+                // Rows
+                [[0, 0], [0, 1], [0, 2]],
+                [[1, 0], [1, 1], [1, 2]],
+                [[2, 0], [2, 1], [2, 2]],
+                // Columns
+                [[0, 0], [1, 0], [2, 0]],
+                [[0, 1], [1, 1], [2, 1]],
+                [[0, 2], [1, 2], [2, 2]],
+                // Diagonals
+                [[0, 0], [1, 1], [2, 2]],
+                [[0, 2], [1, 1], [2, 0]]
+            ];
+
+            for (let win of wins) {
+                const [a, b, c] = win;
+                if (
+                    board[a[0]][a[1]] &&
+                    board[a[0]][a[1]] === board[b[0]][b[1]] &&
+                    board[a[0]][a[1]] === board[c[0]][c[1]]
+                ) {
+                    turns.textContent = `${board[a[0]][a[1]]} wins! 🎉`;
+
+                    if (turn == "X") {
+                        b_score += 1
+                        b_player_score.textContent = b_score
+                    }
+                    else if (turn == "O") {
+                        a_score += 1
+                        a_player_score.textContent = a_score
+                    }
+
+                    disableClicks()
+                }
+            }
+            
+            // Optional: check for draw
+            if (board.flat().every(cell => cell !== "")) {
+                turns.textContent = `It's a draw! 🤝`;
+                disableClicks()
+                return;
+            }
+        }
+
+        function disableClicks() {
+            imgs.forEach(img => {
+                img.style.pointerEvents = "auto"; // Disable clicking
+                img.style.pointerEvents = "none"; // Disable clicking
+                img.src = "asset/blank1.png";
+            });
+        }
+
+        reset.addEventListener("click", function () {
+            // Reset board data
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    board[i][j] = "";
+                }
+            }
+
+            // Reset images and enable clicks
+            imgs.forEach(img => {
+                img.src = "asset/blank1.png";
+                img.style.pointerEvents = "auto";
+            });
+
+            // Reset scores
+            a_score = 0;
+            b_score = 0;
+            a_player_score.textContent = 0;
+            b_player_score.textContent = 0;
+
+            // Reset turn
+            turn = "O";
+            turns.textContent = "Turn for O 😊";
+        });
+
+    </script>
+</body>
+
+</html>

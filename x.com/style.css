@@ -1,0 +1,38 @@
+.middle::-webkit-scrollbar , .left::-webkit-scrollbar,.right::-webkit-scrollbar { /* Chrome, Safari */
+  display: none;
+}
+
+.container {
+    height: 100vh;
+    overflow: hidden;
+}
+.left, .right {
+    height: 100vh;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+}
+.middle {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+@media(min-width:1000px){
+    .container{
+        width: 80%;
+    }
+
+    .left{
+        width: 25%;
+    }
+}
+
+@media(min-width:1650px){
+    .container{
+        width: 70%;
+    }
+
+    .left{
+        width: 25%;
+    }
+}

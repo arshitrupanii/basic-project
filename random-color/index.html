@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 192, 203);
+    }
+
+    .box {
+        border-radius: 20px;
+        padding: 40px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: white;
+        border: none;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s ease;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .color {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        border-radius: 12px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        padding: 12px 40px;
+        font-size: 16px;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+        background-color: #333;
+        transform: scale(1.05);
+    }
+</style>
+
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h3 class="color">rgb(255, 192, 203)</h3>
+            <button class="btn">Click me</button>
+        </div>
+    </div>
+
+    <script>
+        const container = document.querySelector(".container");
+        const button = document.querySelector(".btn");
+        const color = document.querySelector(".color");
+
+        let random_c_fn = () => {
+            return Math.floor(Math.random() * 255);
+        }
+
+        let random_color;
+
+        // after 2 sec color change
+        // setInterval(() => {
+        //     random_color = `rgb(${random_c_fn()},${random_c_fn()},${random_c_fn()})`;
+        //     color.textContent = random_color;
+        //     container.style.background = random_color;
+        // }, 2000);
+
+        button.addEventListener('click', function () {
+            random_color = `rgb(${random_c_fn()},${random_c_fn()},${random_c_fn()})`;
+            color.textContent = random_color;
+            container.style.background = random_color;
+        })
+
+    </script>
+</body>
+
+
+</html>
