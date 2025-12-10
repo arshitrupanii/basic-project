@@ -367,6 +367,7 @@ footer {
   .primary-btn {
     width: 100%;
   }
+
   .feature-card {
     min-width: calc(50% - 10px);
   }
@@ -392,5 +393,15 @@ footer {
 
   .link-column {
     align-items: stretch;
+  }
+}
+
+@media (max-width : 480px) {
+  .example-card{
+    width: 100%;
+  } 
+
+  .feature-card {
+    min-width: 100%;
   }
 }
