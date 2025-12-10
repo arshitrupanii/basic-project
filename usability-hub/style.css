@@ -9,7 +9,7 @@
   font-family: "Poppins";
 }
 
-body{
+body {
   color: var(--primary-text-color);
 }
 
@@ -54,7 +54,7 @@ p {
   background-size: 300px;
 }
 
-.banner-text{
+.banner-text {
   padding: 15px 0px;
   text-align: center;
 }
@@ -63,6 +63,10 @@ p {
   font-size: 1rem;
   font-weight: 900;
   color: white;
+}
+
+.nav-toggle {
+  display: none;
 }
 
 /* main navbar */
@@ -125,11 +129,11 @@ p {
 
 /* header */
 
-header{
+header {
   padding: 50px var(--padding-inline-section) 0;
 }
 
-.header-section{
+.header-section {
   justify-content: center;
   gap: 50px;
 }
@@ -138,7 +142,7 @@ header{
   max-width: 40vw;
 }
 
-.get-started-btn{
+.get-started-btn {
   margin-top: 20px;
   border: none;
 }
@@ -147,67 +151,66 @@ header{
   width: 100%;
 }
 
-
 /* company section */
 
-.companies-header{
+.companies-header {
   text-align: center;
   margin-block: 30px;
   color: var(--primary-text-color);
 }
 
-.logos{
+.logos {
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-.logos img{
+.logos img {
   height: 50px;
 }
 
 /* features sections */
 
-.feature-section{
+.feature-section {
   padding: 80px var(--padding-inline-section) 0;
   background-image: url("assets/asset\ 32.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.feature-header h2{
+.feature-header h2 {
   margin-bottom: 20px;
 }
 
-.feature-header{
+.feature-header {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.feature-area{
+.feature-area {
   margin-top: 20px;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
 }
 
-.feature-card{
-  flex-direction: column; 
+.feature-card {
+  flex-direction: column;
   gap: 20px;
   text-align: center;
   max-width: 30%;
 }
 
 /* big feature sections */
-.big-feature-section{
+.big-feature-section {
   padding: 30px var(--padding-inline-section) 0;
 }
 
-.feature-img img{
+.feature-img img {
   width: 100%;
 }
 
-.feature-desc{
+.feature-desc {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -215,100 +218,101 @@ header{
 
 /* example section */
 
-.example-header{
+.example-header {
   text-align: center;
 }
 
-.example-header h2{
+.example-header h2 {
   margin-bottom: 20px;
 }
 
-.example-area{
+.example-area {
   justify-content: space-between;
   margin-block: 30px;
   flex-wrap: wrap;
 }
 
-.example-card{
+.example-card {
   width: 23%;
   height: 300px;
-  background: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.8)),url('./assets/asset\ 35.jpeg');
-  position: relative; 
+  background: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.8)),
+    url("./assets/asset\ 35.jpeg");
+  position: relative;
   text-decoration: none;
   transition: all 0.4s ease;
 }
 
-.example-card:hover{
+.example-card:hover {
   scale: 1.02;
 }
 
-.card-text{
+.card-text {
   color: white;
   position: absolute;
   bottom: 20px;
   left: 20px;
 }
 
-
 /* cta section */
 
-.cta-section{
+.cta-section {
   background-color: #183b54;
   padding: 120px var(--padding-inline-section) 80px;
 }
 
-.cta-section-container{
+.cta-section-container {
   flex-direction: column;
   gap: 20px;
 }
 
-.cta-section-container h2,.cta-section-container p{
+.cta-section-container h2,
+.cta-section-container p {
   color: white;
   margin: 15px;
 }
 
 /* footer */
 
-footer{
+footer {
   padding-block: 80px;
   background-color: #ebf2fa;
 }
 
-.footer-container{
+.footer-container {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 }
 
-.footer-container a img{
+.footer-container a img {
   width: 200px;
 }
 
-.link-column{
+.link-column {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   gap: 20px;
 }
 
-.link-column a{
+.link-column a {
   color: var(--secondary-text-color);
   text-decoration: none;
 }
 
 /* sub footer */
-.sub-footer{
+.sub-footer {
   padding: var(--padding-inline-section);
   background-color: #b9cde4;
 }
 
-.sub-footer-container{
+.sub-footer-container {
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.sub-footer-container a{
+.sub-footer-container a {
   color: var(--primary-text-color);
   text-decoration: none;
   transition: all 0.4s ease;
@@ -322,8 +326,30 @@ footer{
   padding-inline: var(--padding-inline-section);
 }
 
-
 .flex {
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 990px) {
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .example-area {
+    gap: 20px;
+  }
+
+  .example-card {
+    width: 48%;
+    height: 200px;
+  }
 }
