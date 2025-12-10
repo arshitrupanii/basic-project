@@ -104,6 +104,7 @@ p {
   padding: 12px 24px;
   transition: all 0.2s ease-in;
   text-decoration: none;
+  text-align: center;
 }
 
 .primary-btn:hover {
@@ -134,7 +135,6 @@ header {
 }
 
 .header-section {
-  justify-content: center;
   gap: 50px;
 }
 
@@ -349,7 +349,48 @@ footer {
   }
 
   .example-card {
-    width: 48%;
+    width: calc(50% - 10px);
     height: 200px;
+  }
+}
+
+@media (max-width: 766px) {
+  .header-section {
+    flex-direction: column-reverse;
+  }
+
+  .header-left,
+  .header-right {
+    max-width: 100vw;
+  }
+
+  .primary-btn {
+    width: 100%;
+  }
+  .feature-card {
+    min-width: calc(50% - 10px);
+  }
+
+  .big-feature-container {
+    flex-direction: column;
+  }
+
+  .id {
+    flex-direction: column-reverse;
+  }
+
+  .example-header {
+    margin-top: 30px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .link-column {
+    align-items: stretch;
   }
 }
