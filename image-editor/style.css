@@ -8,6 +8,7 @@
 
 html {
   width: 100%;
+  background-color: var(--bg-primary-color);
   font-family: var(--font-family);
   color: rgb(202, 202, 202);
 }
@@ -35,7 +36,7 @@ main {
 .image-container {
   background-color: var(--bg-secondary-color);
   flex-grow: 1;
-  border-radius: var(--r-md);
+  border-radius: var(--r-lg);
   align-items: center;
 }
 
@@ -47,6 +48,12 @@ main {
 .no-image img{
   width: 150px;
   height: 150px;
+}
+
+#image-canvas{
+  background-color: red;
+  height: 100%;
+  width: 100%;
 }
 
 /* right sides */
@@ -128,4 +135,8 @@ main {
 
 .flex-col {
   flex-direction: column;
+} 
+
+.hide{
+  display: none;
 }
