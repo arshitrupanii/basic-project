@@ -34,13 +34,15 @@ main {
 }
 
 .image-container {
+  max-width: 70vw;
   background-color: var(--bg-secondary-color);
-  flex-grow: 1;
   border-radius: var(--r-lg);
   align-items: center;
+  overflow: auto;
 }
 
 .no-image{
+  position: absolute;
   align-items: center;
   gap: var(--g-md);
 }
@@ -51,9 +53,8 @@ main {
 }
 
 #image-canvas{
-  background-color: red;
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
 }
 
 /* right sides */
@@ -63,7 +64,7 @@ main {
   background-color: var(--bg-secondary-color);
   border-radius: var(--r-md);
   padding: var(--p-lg);
-  overflow:auto;
+  overflow: auto;
 }
 
 .filter{
@@ -139,4 +140,8 @@ main {
 
 .hide{
   display: none;
+}
+
+.show{
+  display: block;
 }

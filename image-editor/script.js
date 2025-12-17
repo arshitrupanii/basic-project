@@ -98,6 +98,7 @@ Object.keys(filters).forEach((key) => {
     createfilterElement(key, filters[key].unit, filters[key].value, filters[key].min, filters[key].max);
 })
 
+
 inputImage.addEventListener("change", (e) => {
     noImage.classList.add("hide")
     
@@ -108,6 +109,8 @@ inputImage.addEventListener("change", (e) => {
     img.src = URL.createObjectURL(file)
 
     img.onload = () => {
+        Imagecanvas.width = img.width
+        Imagecanvas.height = img.height
         canvasCTX.drawImage(img,0,0)
     }
 
