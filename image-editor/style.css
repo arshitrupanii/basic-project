@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  font-family: var(--font-family);
+  color: rgb(202, 202, 202);
+}
+
+main {
+  height: 100vh;
+  background-color: var(--bg-primary-color);
+  width: 100%;
+  padding: var(--p-xl);
+  gap: var(--g-lg);
+}
+
+/* left sides */
+
+.left {
+  flex-grow: 1;
+  gap: var(--g-lg);
+}
+
+.header-btns {
+  height: auto;
+  gap: var(--g-lg);
+}
+
+.image-container {
+  background-color: var(--bg-secondary-color);
+  flex-grow: 1;
+  border-radius: var(--r-md);
+  align-items: center;
+}
+
+.no-image{
+  align-items: center;
+  gap: var(--g-md);
+}
+
+.no-image img{
+  width: 150px;
+  height: 150px;
+}
+
+/* right sides */
+
+.right {
+  min-width: 25vw;
+  background-color: var(--bg-secondary-color);
+  border-radius: var(--r-md);
+  padding: var(--p-lg);
+  overflow:auto;
+}
+
+.filter{
+    margin-top: var(--m-sm);
+}
+
+.filter input {
+  margin-top: var(--m-sm);
+  width: 100%;
+  appearance: none;
+  height: 4px;
+  background: #3f3f46;
+  border-radius: var(--r-full);
+  cursor: pointer;
+}
+
+/* Thumb */
+.filter input::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background-color: #ef4444;
+  border-radius: var(--r-full);
+}
+
+/* button */
+
+.btn {
+  padding: var(--p-sm) var(--p-xl);
+  border: none;
+  border-radius: var(--r-md);
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* Upload */
+.upload-btn {
+  background-color: #c4c4c4;
+  color: #131313;
+  font-weight: 500;
+}
+
+/* Reset */
+.reset-btn {
+  background-color: #de0000;
+  color: var(--text-primary-color);
+  font-family: var(--font-family);
+}
+
+/* Download */
+.download-btn {
+  background-color: #1e8f3a;
+  color: var(--text-primary-color);
+  font-family: var(--font-family);
+}
+
+/* Simple hover */
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* utility */
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-col {
+  flex-direction: column;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image editor</title>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="flex">
+
+        <!-- left side -->
+        <div class="left flex flex-col">
+
+            <div class="header-btns flex">
+
+                <label class="btn upload-btn" for="upload-image">
+                    Upload Image
+                    <input type="file" name="upload-image" id="upload-image" accept="image/png, image/jpeg" hidden>
+                </label>
+
+                <button class="btn reset-btn">
+                    Reset
+                </button>
+
+                <button class="btn download-btn">
+                    Dowload
+                </button>
+            </div>
+
+            <div class="image-container flex">
+                <div class="no-image flex flex-col">
+                    <img src="assets/no-image.png" alt="">
+                    <h2>No image chosen</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <h2>Filters</h2>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
