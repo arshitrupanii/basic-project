@@ -13,19 +13,13 @@ const filters = {
         max : 200,
         unit : "%"
     },
-    exposure : {
-        value : 100,
-        min : 0,
-        max : 200,
-        unit : "%"
-    },
     saturation : {
         value : 100,
         min : 0,
         max : 200,
         unit : "%"
     },
-    hueRotation : {
+    "hue-rotate" : {
         value : 0,
         min : 0,
         max : 360,
@@ -65,11 +59,17 @@ const filters = {
 
 const inputImage = document.querySelector("#upload-image");
 
-const noImage = document.querySelector(".no-image");
+const noImageDiv = document.querySelector(".no-image");
 
-const Imagecanvas = document.querySelector("#image-canvas")
+let Imagecanvas = document.querySelector("#image-canvas")
 const canvasCTX = Imagecanvas.getContext("2d");
 
+
+let file = null
+let img = null
+
+
+// this fn add filter element from object to  dom
 function createfilterElement(name, unit, value, min, max){
     const div = document.createElement("div")
     div.classList.add('filter')
@@ -83,28 +83,17 @@ function createfilterElement(name, unit, value, min, max){
     input.max = max
     input.value = value
     input.id = name
+    input.dataset.unit = unit
 
     div.appendChild(filter)
     div.appendChild(input)
 
     filterContainer.appendChild(div)
-
 }
 
-
-
-// this insert filter div into dom
-Object.keys(filters).forEach((key) => {
-    createfilterElement(key, filters[key].unit, filters[key].value, filters[key].min, filters[key].max);
-})
-
-
-inputImage.addEventListener("change", (e) => {
-    noImage.classList.add("hide")
-    
-    const file = e.target.files[0]
-
-    const img = new Image();
+// draw image canvas
+function drawImage(){
+    img = new Image();
 
     img.src = URL.createObjectURL(file)
 
@@ -113,5 +102,27 @@ inputImage.addEventListener("change", (e) => {
         Imagecanvas.height = img.height
         canvasCTX.drawImage(img,0,0)
     }
+}
+
+// this insert filter div into dom
+Object.keys(filters).forEach((key) => {
+    createfilterElement(key, filters[key].unit, filters[key].value, filters[key].min, filters[key].max);
+})
+
+
+filterContainer.addEventListener("input", (e)=>{
+    const filterString = `${e.target.id}(${e.target.value}${e.target.dataset.unit})`
+
+    // canvasCTX.clearRect(0, 0, Imagecanvas.width, Imagecanvas.height);
+    canvasCTX.filter = filterString;
+    canvasCTX.drawImage(img, 0, 0);
 
 })
+
+// this add image 
+inputImage.addEventListener("change", (e) => {
+    // it set file image
+    file = e.target.files[0]
+    drawImage()
+})
+
