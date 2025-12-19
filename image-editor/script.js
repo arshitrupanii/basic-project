@@ -1,55 +1,74 @@
-const filterContainer = document.querySelector(".right");
-
 const filters = {
-    brightness : {
-        value : 100,
-        min : 0,
-        max : 200,
-        unit : "%"
+    brightness: {
+        name: "Brightness",
+        value: 100,
+        min: 0,
+        max: 200,
+        unit: "%"
     },
-    contrast : {
-        value : 100,
-        min : 0,
-        max : 200,
-        unit : "%"
+    contrast: {
+        name: "Contrast",
+        value: 100,
+        min: 0,
+        max: 200,
+        unit: "%"
     },
-    saturation : {
-        value : 100,
-        min : 0,
-        max : 200,
-        unit : "%"
+    saturate: {
+        name: "Saturation",
+        value: 100,
+        min: 0,
+        max: 200,
+        unit: "%"
     },
-    "hue-rotate" : {
-        value : 0,
-        min : 0,
-        max : 360,
-        unit : 'deg'
+    "hue-rotate": {
+        name: "Hue Rotate",
+        value: 0,
+        min: 0,
+        max: 360,
+        unit: "deg"
     },
-    blur : {
-        value : 0,
-        min : 0,
-        max : 20,
-        unit : "px"
+    blur: {
+        name: "Blur",
+        value: 0,
+        min: 0,
+        max: 20,
+        unit: "px"
     },
-    grayscale : {
-        value : 0,
-        min : 0,
-        max : 100,
-        unit : "%"
+    grayscale: {
+        name: "Grayscale",
+        value: 0,
+        min: 0,
+        max: 100,
+        unit: "%"
     },
-    sepia : {
-        value : 0,
-        min : 0,
-        max : 100,
-        unit : "%"
+    sepia: {
+        name: "Sepia",
+        value: 0,
+        min: 0,
+        max: 100,
+        unit: "%"
     },
-    invert : {
-        value : 0,
-        min : 0,
-        max : 100,
-        unit : "%"
+    invert: {
+        name: "Invert",
+        value: 0,
+        min: 0,
+        max: 100,
+        unit: "%"
+    },
+
+    // ⚠️ Canvas-only (handled via globalAlpha)
+    opacity: {
+        name: "Opacity",
+        value: 100,
+        min: 0,
+        max: 100,
+        unit: "%"
     }
-}
+};
+const defaultFilters = JSON.parse(JSON.stringify(filters));
+
+
+const filterContainer = document.querySelector(".right");
 
 const inputImage = document.querySelector("#upload-image");
 const ResentButton = document.querySelector(".reset-btn");
@@ -66,29 +85,29 @@ let img = null
 
 
 // this fn add filter element from object to  dom
-function createfilterElement(name, unit, value, min, max){
+function createfilterElement(text, id, unit, value, min, max) {
     const div = document.createElement("div")
     div.classList.add('filter')
 
-    const filter = document.createElement("div")
-    filter.innerText = name
+    const label = document.createElement("div")
+    label.innerText = text
 
     const input = document.createElement("input")
     input.type = 'range'
     input.min = min
     input.max = max
     input.value = value
-    input.id = name
+    input.id = id
     input.dataset.unit = unit
 
-    div.appendChild(filter)
+    div.appendChild(label)
     div.appendChild(input)
 
     filterContainer.appendChild(div)
 }
 
 // draw image canvas
-function drawImage(){
+function drawImage() {
     img = new Image();
 
     img.src = URL.createObjectURL(file)
@@ -96,30 +115,52 @@ function drawImage(){
     img.onload = () => {
         Imagecanvas.width = img.width
         Imagecanvas.height = img.height
-        canvasCTX.drawImage(img,0,0)
+        applyAllFilters();
     }
 }
 
-function loadFilters(){
+function loadFilters() {
     Object.keys(filters).forEach((key) => {
-        createfilterElement(key, filters[key].unit, filters[key].value, filters[key].min, filters[key].max);
+        const f = filters[key];
+        createfilterElement(f.name, key, f.unit, f.value, f.min, f.max);
     })
 }
 
-function removeFilter(){
-    const elements = document.querySelectorAll(".filter");
-    elements.forEach(el => el.remove());
+function removeFilter() {
+  Object.keys(filters).forEach(key => {
+    // reset JS state
+    filters[key].value = defaultFilters[key].value;
+
+    // reset slider UI
+    const input = document.getElementById(key);
+    if (input) {
+      input.value = defaultFilters[key].value;
+    }
+  });
 }
 
-function downloadCanvas() {
-    const link = document.createElement("a");
-    link.download = "image.png";
-    link.href = Imagecanvas.toDataURL("image/png");
-    link.click();
+
+function buildFilterString() {
+    return Object.entries(filters)
+        .filter(([key]) => key !== "opacity")
+        .map(([key, f]) => `${key}(${f.value}${f.unit})`)
+        .join(" ");
+}
+
+function applyAllFilters() {
+    canvasCTX.clearRect(0, 0, Imagecanvas.width, Imagecanvas.height);
+
+    canvasCTX.globalAlpha = filters.opacity.value / 100;
+    canvasCTX.filter = buildFilterString();
+
+    canvasCTX.drawImage(img, 0, 0);
+
+    canvasCTX.globalAlpha = 1;
+    canvasCTX.filter = "none";
 }
 
 
-// start
+// start ------------------------
 // this insert filter div into dom
 loadFilters()
 
@@ -131,20 +172,23 @@ inputImage.addEventListener("change", (e) => {
     drawImage()
 })
 
-ResentButton.addEventListener("click", (e)=> {
-    removeFilter()
-    loadFilters()
-    drawImage()
+filterContainer.addEventListener("input", (e) => {
+    if (!img) return;
+    filters[e.target.id].value = e.target.value;
+    applyAllFilters();
 })
 
-downloadButton.addEventListener("click", ()=> {
-    if(img) downloadCanvas()
+
+ResentButton.addEventListener("click", (e) => {
+    removeFilter();
+    if (img) applyAllFilters();
 })
 
-filterContainer.addEventListener("input", (e)=>{
-    if(img){
-        const filterString = `${e.target.id}(${e.target.value}${e.target.dataset.unit})`
-        canvasCTX.filter = filterString;
-        canvasCTX.drawImage(img, 0, 0);
-    }
-})
+
+downloadButton.addEventListener("click", () => {
+    if (!img) return;
+    const link = document.createElement("a");
+    link.download = "image.png";
+    link.href = Imagecanvas.toDataURL("image/png");
+    link.click();
+});
