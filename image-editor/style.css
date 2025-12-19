@@ -67,6 +67,19 @@ main {
   border-radius: var(--r-md);
   padding: var(--p-lg);
   overflow: auto;
+  gap: var(--g-md);
+}
+
+.filters{
+
+}
+
+.presets{
+  width: 100%;
+  overflow: scroll;
+  height: 100%;
+  /* background-color: brown; */
+  flex-wrap:  nowrap;
 }
 
 .filter{
@@ -124,6 +137,12 @@ main {
   font-family: var(--font-family);
 }
 
+.preset-btn{
+  background-color: #c4c4c4;
+  color: black;
+  font-family: var(--font-family);
+}
+
 /* Simple hover */
 .btn:hover {
   opacity: 0.85;
@@ -139,6 +158,10 @@ main {
 .flex-col {
   flex-direction: column;
 } 
+
+.space-between{
+  justify-content: space-between;
+}
 
 .hide{
   display: none;

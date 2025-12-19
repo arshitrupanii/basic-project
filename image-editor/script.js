@@ -68,7 +68,7 @@ const filters = {
 const defaultFilters = JSON.parse(JSON.stringify(filters));
 
 
-const filterContainer = document.querySelector(".right");
+const filterContainer = document.querySelector(".filters");
 
 const inputImage = document.querySelector("#upload-image");
 const ResentButton = document.querySelector(".reset-btn");
