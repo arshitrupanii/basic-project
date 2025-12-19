@@ -65,14 +65,138 @@ const filters = {
         unit: "%"
     }
 };
-const defaultFilters = JSON.parse(JSON.stringify(filters));
 
+const presets = {
+    drama: {
+        brightness: 110,
+        contrast: 140,
+        saturate: 130,
+        "hue-rotate": 0,
+        blur: 0,
+        grayscale: 0,
+        sepia: 10,
+        invert: 0,
+        opacity: 100
+    },
+
+    vintage: {
+        brightness: 105,
+        contrast: 90,
+        saturate: 85,
+        "hue-rotate": 10,
+        blur: 0,
+        grayscale: 0,
+        sepia: 35,
+        invert: 0,
+        opacity: 100
+    },
+
+    oldSchool: {
+        brightness: 100,
+        contrast: 110,
+        saturate: 80,
+        "hue-rotate": 0,
+        blur: 0,
+        grayscale: 20,
+        sepia: 40,
+        invert: 0,
+        opacity: 100
+    },
+
+    cyberpunk: {
+        brightness: 120,
+        contrast: 160,
+        saturate: 180,
+        "hue-rotate": 280,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        invert: 0,
+        opacity: 100
+    },
+
+    softGlow: {
+        brightness: 115,
+        contrast: 90,
+        saturate: 110,
+        "hue-rotate": 0,
+        blur: 2,
+        grayscale: 0,
+        sepia: 5,
+        invert: 0,
+        opacity: 100
+    },
+
+    noir: {
+        brightness: 95,
+        contrast: 150,
+        saturate: 0,
+        "hue-rotate": 0,
+        blur: 1,
+        grayscale: 100,
+        sepia: 10,
+        invert: 0,
+        opacity: 100
+    },
+
+    warmSunset: {
+        brightness: 110,
+        contrast: 120,
+        saturate: 140,
+        "hue-rotate": 20,
+        blur: 0,
+        grayscale: 0,
+        sepia: 25,
+        invert: 0,
+        opacity: 100
+    },
+
+    coolTone: {
+        brightness: 105,
+        contrast: 110,
+        saturate: 90,
+        "hue-rotate": 220,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        invert: 0,
+        opacity: 100
+    },
+
+    faded: {
+        brightness: 115,
+        contrast: 80,
+        saturate: 70,
+        "hue-rotate": 0,
+        blur: 0,
+        grayscale: 10,
+        sepia: 10,
+        invert: 0,
+        opacity: 100
+    },
+
+    retroPop: {
+        brightness: 120,
+        contrast: 130,
+        saturate: 160,
+        "hue-rotate": 330,
+        blur: 0,
+        grayscale: 0,
+        sepia: 15,
+        invert: 0,
+        opacity: 100
+    }
+};
+
+const defaultFilters = JSON.parse(JSON.stringify(filters));
 
 const filterContainer = document.querySelector(".filters");
 
 const inputImage = document.querySelector("#upload-image");
 const ResentButton = document.querySelector(".reset-btn");
 const downloadButton = document.querySelector(".download-btn");
+
+const presetButtonsDiv = document.querySelector(".preset-btns");
 
 const noImageDiv = document.querySelector(".no-image");
 
@@ -127,16 +251,16 @@ function loadFilters() {
 }
 
 function removeFilter() {
-  Object.keys(filters).forEach(key => {
-    // reset JS state
-    filters[key].value = defaultFilters[key].value;
+    Object.keys(filters).forEach(key => {
+        // reset JS state
+        filters[key].value = defaultFilters[key].value;
 
-    // reset slider UI
-    const input = document.getElementById(key);
-    if (input) {
-      input.value = defaultFilters[key].value;
-    }
-  });
+        // reset slider UI
+        const input = document.getElementById(key);
+        if (input) {
+            input.value = defaultFilters[key].value;
+        }
+    });
 }
 
 
@@ -159,10 +283,46 @@ function applyAllFilters() {
     canvasCTX.filter = "none";
 }
 
+// it add button into preset dom
+function loadPreset() {
+    Object.keys(presets).forEach((name) => {
+        const button = document.createElement("button")
+        button.classList.add("preset-btn")
+        button.textContent = name
+
+        button.addEventListener("click", () => {
+            applyPreset(name);
+        });
+
+        presetButtonsDiv.appendChild(button)
+    })
+
+}
+
+function applyPreset(name) {
+    const preset = presets[name];
+    if (!preset) return;
+
+    Object.keys(preset).forEach((key) => {
+        if (!filters[key]) return;
+
+        // update JS state
+        filters[key].value = preset[key];
+
+        // update slider UI
+        const input = document.getElementById(key);
+        if (input) input.value = preset[key];
+    });
+
+    applyAllFilters();
+}
+
 
 // start ------------------------
 // this insert filter div into dom
 loadFilters()
+loadPreset()
+
 
 // handle image
 inputImage.addEventListener("change", (e) => {
@@ -178,12 +338,10 @@ filterContainer.addEventListener("input", (e) => {
     applyAllFilters();
 })
 
-
 ResentButton.addEventListener("click", (e) => {
     removeFilter();
     if (img) applyAllFilters();
 })
-
 
 downloadButton.addEventListener("click", () => {
     if (!img) return;

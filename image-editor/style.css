@@ -66,24 +66,12 @@ main {
   background-color: var(--bg-secondary-color);
   border-radius: var(--r-md);
   padding: var(--p-lg);
-  overflow: auto;
   gap: var(--g-md);
-}
-
-.filters{
-
-}
-
-.presets{
-  width: 100%;
-  overflow: scroll;
-  height: 100%;
-  /* background-color: brown; */
-  flex-wrap:  nowrap;
+  overflow: auto;
 }
 
 .filter{
-    margin-top: var(--m-sm);
+  margin-top: var(--m-md);
 }
 
 .filter input {
@@ -103,6 +91,28 @@ main {
   height: 15px;
   background-color: #ef4444;
   border-radius: var(--r-full);
+}
+
+.preset-heading{
+  margin: var(--m-md) 0px;
+}
+
+.preset-btns{
+  max-width: 25vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--p-xs);
+}
+
+.preset-btn{
+  color: black;
+  background-color: #c4c4c4;
+  font-family: var(--font-family);
+  padding: var(--p-sm) var(--p-sm);
+  border: none;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  flex-grow: 1;
 }
 
 /* button */
@@ -137,14 +147,8 @@ main {
   font-family: var(--font-family);
 }
 
-.preset-btn{
-  background-color: #c4c4c4;
-  color: black;
-  font-family: var(--font-family);
-}
-
 /* Simple hover */
-.btn:hover {
+.btn:hover, .preset-btn:hover {
   opacity: 0.85;
 }
 
@@ -157,12 +161,12 @@ main {
 
 .flex-col {
   flex-direction: column;
-} 
-
-.space-between{
-  justify-content: space-between;
 }
 
 .hide{
   display: none;
+}
+
+.space-between{
+  justify-content: space-between;
 }
