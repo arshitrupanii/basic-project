@@ -43,12 +43,6 @@ const filters = {
         max : 100,
         unit : "%"
     },
-    opacity : {
-        value : 100,
-        min : 0,
-        max : 100,
-        unit : "%"
-    },
     invert : {
         value : 0,
         min : 0,
@@ -58,6 +52,8 @@ const filters = {
 }
 
 const inputImage = document.querySelector("#upload-image");
+const ResentButton = document.querySelector(".reset-btn");
+const downloadButton = document.querySelector(".download-btn");
 
 const noImageDiv = document.querySelector(".no-image");
 
@@ -104,25 +100,51 @@ function drawImage(){
     }
 }
 
+function loadFilters(){
+    Object.keys(filters).forEach((key) => {
+        createfilterElement(key, filters[key].unit, filters[key].value, filters[key].min, filters[key].max);
+    })
+}
+
+function removeFilter(){
+    const elements = document.querySelectorAll(".filter");
+    elements.forEach(el => el.remove());
+}
+
+function downloadCanvas() {
+    const link = document.createElement("a");
+    link.download = "image.png";
+    link.href = Imagecanvas.toDataURL("image/png");
+    link.click();
+}
+
+
+// start
 // this insert filter div into dom
-Object.keys(filters).forEach((key) => {
-    createfilterElement(key, filters[key].unit, filters[key].value, filters[key].min, filters[key].max);
-})
+loadFilters()
 
-
-filterContainer.addEventListener("input", (e)=>{
-    const filterString = `${e.target.id}(${e.target.value}${e.target.dataset.unit})`
-
-    // canvasCTX.clearRect(0, 0, Imagecanvas.width, Imagecanvas.height);
-    canvasCTX.filter = filterString;
-    canvasCTX.drawImage(img, 0, 0);
-
-})
-
-// this add image 
+// handle image
 inputImage.addEventListener("change", (e) => {
-    // it set file image
+    // hide no image div
+    noImageDiv.classList.add("hide");
     file = e.target.files[0]
     drawImage()
 })
 
+ResentButton.addEventListener("click", (e)=> {
+    removeFilter()
+    loadFilters()
+    drawImage()
+})
+
+downloadButton.addEventListener("click", ()=> {
+    if(img) downloadCanvas()
+})
+
+filterContainer.addEventListener("input", (e)=>{
+    if(img){
+        const filterString = `${e.target.id}(${e.target.value}${e.target.dataset.unit})`
+        canvasCTX.filter = filterString;
+        canvasCTX.drawImage(img, 0, 0);
+    }
+})
