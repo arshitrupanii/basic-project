@@ -1,15 +1,15 @@
-// const BASE_URL = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
+const BASE_URL = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
 
-// const dropdown = document.querySelectorAll('.fromm select ');
+const dropdown = document.querySelectorAll('.fromm select ');
 
-// // for (let selcet of dropdown){
-// //     for(currCode in countryList){
-// //         let newoption = document.createElement('option');
-// //         newoption.innerText = currCode;
-// //         newoption.value = currCode;
-// //         selcet.appendChild(newoption);
-// //     }
-// // // }
+for (let selcet of dropdown){
+    for(currCode in countryList){
+        let newoption = document.createElement('option');
+        newoption.innerText = currCode;
+        newoption.value = currCode;
+        selcet.appendChild(newoption);
+    }
+}
 
 // // for (let select of dropdown){
 // //     console.log(select);
