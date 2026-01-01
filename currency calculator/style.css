@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -8,101 +9,72 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;   
+    height: 100vh;
+
     background-color: #f4e4ba;
-    /* border: 2px solid black; */
+    /* background-color: black; */
 }
 
-.container {
-    border-radius: 10px;
-    height: 50vh;
+main {
     border: 1px solid lightgray;
-    width: 40vh;
+    border-radius: 10px;
     background-color: white;
     padding: 2rem;
-    
-}
-
-input{
-    padding: 1px;
-    border-radius: 0.75rem;
-    border: none;
-    outline: none;
-}
-
-
-select, textarea{
-    border-radius: 0.75rem;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    width: 100%;
-}
-
-.buttons button{
-    border-radius: 0.75rem;
-    border: none;
-    outline: none;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    margin-top: 60px;
-    height: 40px;
-    border-radius: 250px;
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: auto;
+    flex-direction: column;
+    gap: 15px;
 }
 
-form input{
+/* text area */
+#amount{
+    width: 100%;
+    margin-top: 10px;
     border: 1px solid lightgray;
-    padding-left: 0.4rem;
-    width: 80%;
+    outline: none;
+    border-radius: 20px;
+    padding: 5px;
 }
 
+/* dropdown */
 .dropdown{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-
-
-.text{
-    margin-top: 20px;
+.from div, .to div{
+    padding-left: 6px;
+    max-width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid lightgray;
 }
 
 .from img, .to img{
     max-width: 1.75rem;
 }
 
-.from{
-    padding-left: 6px;
-    max-width: 6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    border: 1px solid lightgray;
+select{
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    outline: none;
 }
 
-.to{
-    padding-left: 6px;
-    max-width: 6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-radius: 10px;
-    border: 1px solid lightgray;
+/* exchange text */
+.exchange{
+    margin-top: 20px;
 }
 
 
-i{
-    margin-top: 7%;
-}
-
-.fromm p, .too p{
-    margin-left: 3px;
+#submit-btn{
+    border-radius: 0.75rem;
+    border: none;
+    outline: none;
+    margin-top: 50px;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
 }

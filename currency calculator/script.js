@@ -1,39 +1,44 @@
-const BASE_URL = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
+const BASE_URL = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies";
 
-const dropdown = document.querySelectorAll('.fromm select ');
 
-for (let selcet of dropdown){
-    for(currCode in countryList){
-        let newoption = document.createElement('option');
-        newoption.innerText = currCode;
-        newoption.value = currCode;
-        selcet.appendChild(newoption);
-    }
+let flags = document.querySelectorAll(".flag");
+let selects = document.querySelectorAll(".currOption");
+const exchangeText = document.querySelector(".exchange");
+const btn = document.querySelector("#submit-btn");
+
+// this add select into dom
+for (let option of selects){
+  for(currCode in countryList){
+    const newOption = document.createElement("option");
+    newOption.innerText = currCode;
+    newOption.value = currCode;
+    option.appendChild(newOption)
+  }
+  option.value = 'USD'
 }
+selects[1].value = 'INR';
 
-// // for (let select of dropdown){
-// //     console.log(select);
-// // }
+// it change only flag
+selects.forEach((select, index) => {
+  select.addEventListener("change", () => {
+    const currCode = select.value;
+    const countryCode = countryList[currCode];
 
-// console.log(dropdown);
+    flags[index].src = `https://flagsapi.com/${countryCode}/flat/64.png`;
+  });
+});
 
 
-const BASE_URL = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
+btn.addEventListener("click", async () => {
+  const fromCurrency = selects[0].value.toLowerCase();
+  const toCurrency = selects[1].value.toLowerCase();
 
-fetch(BASE_URL)
-  .then(response => response.json())
-  .then(data => {
-    const countryList = data;
-    const dropdown = document.querySelectorAll('.form select');
+  const URL = `${BASE_URL}/${fromCurrency}.json`;
 
-    // Populate the dropdown list
-    dropdown.forEach(select => {
-      Object.keys(countryList).forEach(currCode => {
-        const newOption = document.createElement('option');
-        newOption.innerText = currCode;
-        newOption.value = currCode;
-        select.appendChild(newOption);
-      });
-    });
-  })
-  .catch(error => console.error('Error fetching data:', error));
+  const res = await fetch(URL);
+  const data = await res.json();
+
+  const rate = data[fromCurrency][toCurrency];
+
+  exchangeText.innerText = `1 ${fromCurrency.toUpperCase()} = ${rate} ${toCurrency.toUpperCase()}`;
+});

@@ -10,62 +10,48 @@
 </head>
 
 <body>
-    <div class="container">
-        <h2>Currency convertor</h2>
-        <br>
-        
-        <form>
-            <p>Enter the number : </p>
-            <input type="text" id="amount" name="amount" required>
-        </form>
-
-        <br>
-
-        <section class="middle_part">
-            
-            <div class="dropdown">
-                
-                <div class="fromm">
-                    <p>From</p>
-                    <div class="from">
-                        <img src="https://flagsapi.com/US/flat/64.png" alt="">
-                        <select name="currency" id="currency">
-                            <option value="USD">USD</option>
-                            <option value="INR">INR</option>
-                            <option value="EUR">EUR</option>
-                            <option value="AUD">AUD</option>
-                        </select>
-                    </div>
-                </div>
-
-                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                
-                <div class="too">
-                    <p>To</p>
-                    <div class="to">
-                        <img src="https://flagsapi.com/IN/flat/64.png" alt="">
-                        <select name="currency" id="currency">
-                            <option value="USD">USD</option>
-                            <option value="INR" selected>INR</option>
-                            <option value="EUR">EUR</option>
-                            <option value="AUD">AUD</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <p class="text">1 USD = 80 INR</p>
-
-        <div class="buttons">
-            <button type="submit">Get exchange</button>
+    <main>
+        <div>
+            <h2>Currency convertor</h2>
         </div>
 
-    </div>
+        <div>
+            <p>Enter the number : </p>
+            <input type="number" id="amount" name="amount">
+        </div>
+
+        <div class="dropdown">
+            <div class="from">
+                <p>From</p>
+                <div>
+                    <img class="flag" src="https://flagsapi.com/US/flat/64.png" alt="">
+                    <select name="currency" class="currOption"></select>
+                </div>
+            </div>
+
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+            <div class="to">
+                <p>To</p>
+                <div>
+                    <img class="flag" src="https://flagsapi.com/IN/flat/64.png" alt="">
+                    <select name="currency" class="currOption"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="exchange">
+            1 USD = 80 INR
+        </div>
+
+        <div>
+            <button id="submit-btn" type="submit">Get exchange</button>
+        </div>
+
+    </main>
 
     <script src="codes.js"></script>
-    <script src="script.js"></script>   
+    <script src="script.js"></script>
 
 </body>
 
