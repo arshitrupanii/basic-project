@@ -19,10 +19,10 @@ main {
     border: 1px solid lightgray;
     border-radius: 10px;
     background-color: white;
-    padding: 2rem;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 2rem;
 }
 
 /* text area */

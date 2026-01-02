@@ -5,10 +5,12 @@ let flags = document.querySelectorAll(".flag");
 let selects = document.querySelectorAll(".currOption");
 const exchangeText = document.querySelector(".exchange");
 const btn = document.querySelector("#submit-btn");
+let amount = document.querySelector("#amount");
+
 
 // this add select into dom
-for (let option of selects){
-  for(currCode in countryList){
+for (let option of selects) {
+  for (currCode in countryList) {
     const newOption = document.createElement("option");
     newOption.innerText = currCode;
     newOption.value = currCode;
@@ -40,5 +42,5 @@ btn.addEventListener("click", async () => {
 
   const rate = data[fromCurrency][toCurrency];
 
-  exchangeText.innerText = `1 ${fromCurrency.toUpperCase()} = ${rate} ${toCurrency.toUpperCase()}`;
+  exchangeText.innerText = `${amount.value} ${fromCurrency.toUpperCase()} = ${(amount.value * rate).toFixed(2)} ${toCurrency.toUpperCase()}`;
 });
