@@ -20,6 +20,7 @@ for (let option of selects) {
 }
 selects[1].value = 'INR';
 
+
 // it change only flag
 selects.forEach((select, index) => {
   select.addEventListener("change", () => {
@@ -31,7 +32,7 @@ selects.forEach((select, index) => {
 });
 
 
-btn.addEventListener("click", async () => {
+const CurrencyConverter = async () => {
   const fromCurrency = selects[0].value.toLowerCase();
   const toCurrency = selects[1].value.toLowerCase();
 
@@ -43,4 +44,10 @@ btn.addEventListener("click", async () => {
   const rate = data[fromCurrency][toCurrency];
 
   exchangeText.innerText = `${amount.value} ${fromCurrency.toUpperCase()} = ${(amount.value * rate).toFixed(2)} ${toCurrency.toUpperCase()}`;
+}
+
+
+btn.addEventListener("click", CurrencyConverter);
+document.querySelector("body").addEventListener("keydown", (e) => {
+  e.key == "Enter" ? CurrencyConverter() : "";
 });
