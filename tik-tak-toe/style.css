@@ -7,9 +7,9 @@
 }
 
 body {
-  font-family: "Poppins", cursive;
+  font-family: "Poppins", 'Arial Narrow Bold', sans-serif;
   height: 100vh;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #000c40, #000124);
   display: flex;
   justify-content: center;
   align-items: center;

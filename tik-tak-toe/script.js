@@ -29,6 +29,9 @@ const checkWin = () => {
             winText.textContent = `${board[a]} Win 🎉 !!`
         }
     }
+    
+    const hasEmpty = board.some(item => item === "");
+    !hasEmpty ? winText.textContent = `Draw !!` : '';
 };
 
 const DisplayBoard = () => {
