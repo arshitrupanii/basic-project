@@ -1,27 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToCon Total Control</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
     <nav>
+      <div class="navbar container flex space-between">
+        <!-- nav logo -->
         <div class="nav-logo">
-            <a href="#">
-                <img src="assets/navLogo.png" alt="">
-            </a>
+          <a href="#">
+            <img src="assets/navLogo.png" alt="" />
+          </a>
         </div>
+
+        <!-- nav links -->
         <div class="nav-menu">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Service</a></li>
-                <li><a href="#">Our Work</a></li>
-                <li><button class="">Contact Us</button></li>
-            </ul>
+          <ul class="flex align-center">
+            <li><a class="nav-link" href="#">Home</a></li>
+            <li><a class="nav-link" href="#">About us</a></li>
+            <li><a class="nav-link" href="#">Service</a></li>
+            <li><a class="nav-link" href="#">Our Work</a></li>
+            <li><button class="btn">Contact Us</button></li>
+          </ul>
         </div>
+      </div>
     </nav>
-</body>
+
+    <!-- HERO SECTIOn -->
+    <section class="hero-section">
+      <div class="container flex space-between">
+        <div class="hero-left">
+          <h1>
+            RELIABLE CONSTRUCTION & RENOVATION
+            <span class="secondary-color">SERVICES</span>
+          </h1>
+        </div>
+        <div class="hero-right">
+          <p>
+            Delivering high-quality, sustainable renovations and construction
+            with attention to detail and future-ready solutions.
+          </p>
+          <button class="btn">Transform Your Home Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO IMAGE SECTION -->
+    <section class="hero-section-image">
+      <div class="container">
+        <img src="assets/heroImage.png" alt="" />
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div class="container flex">
+        <div class="stat flex flex-col">
+          <h2>120+</h2>
+          <h4 class="text-white">Project Completed</h4>
+          <p class="text-gray">
+            From small repairs to full renovations, completed with care and
+            expertise.
+          </p>
+        </div>
+        <div class="stat flex flex-col">
+          <h2>15+</h2>
+          <h4 class="text-white">Years of Experience</h4>
+          <p class="text-gray">
+            Hands-on expertise in construction and renovations you can rely on.
+          </p>
+        </div>
+        <div class="stat flex flex-col">
+          <h2>40</h2>
+          <h4 class="text-white">Skilled Professionals</h4>
+          <p class="text-gray">
+            A network of experts ensuring quality and reliable solutions.
+          </p>
+        </div>
+        <div class="stat flex flex-col">
+          <h2>50 km</h2>
+          <h4 class="text-white">Service Area</h4>
+          <p class="text-gray">
+            Serving Herkenbosch and surrounding towns within a 50 km radius.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+      <div class="container flex">
+        <div class="about-left">
+          <img src="assets/AboutSec.png" alt="" />
+        </div>
+
+        <div class="about-right flex flex-col justify-center">
+          <h1>
+            A PROFESSIONAL APPROACH WITH A
+            <span class="secondary-color">PERSONAL TOUCH</span>
+          </h1>
+          <p>
+            My name is Nico, and I work as an electrician, air-conditioning
+            installer, and renovation specialist in the Roermond region.What
+            sets me apart is the way I look at each project: not just the task
+            in front of me, but everything around it.
+            <br /><br />
+            Sometimes customers hire me for one specific job — replacing a
+            consumer unit, installing an air conditioner, or placing a charging
+            station.But often, I'm asked to take on a bigger role: thinking
+            along, advising where needed (and yes, sometimes even unasked), and
+            keeping an eye on the entire project.
+            <br /><br />
+            Over the years, I've noticed that many problems arise because nobody
+            looks ahead.A bathroom renovation affects the electrical layout. New
+            windows affect ventilation.An air-conditioning system affects energy
+            consumption and insulation.
+            <br /><br />
+            I help customers avoid unpleasant surprises later by thinking a few
+            steps ahead and making sure every detail fits into the bigger plan.
+          </p>
+          <button class="about-btn btn">Read more</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR SERVICES -->
+    <section class="our-services">
+      <div class="container flex flex-col align-center">
+        <h2 class="services-title">
+          OUR <span class="secondary-color">SERVICES</span>
+        </h2>
+        <p class="services-subtitle">Below are the core services I provide</p>
+
+        <!-- services box -->
+        <div class="services-box">
+          <div class="container flex flex-col">
+
+            <!-- service 1 -->
+            <div class="flex">
+              <div class="service-left flex flex-col justify-center">
+                <h1>ELECTRICAL INSTALLATIONS</h1>
+                <p>
+                  Professional electrical work for your property, including:
+                </p>
+                <ul>
+                  <li>Installation and replacement of meter boxes</li>
+                  <li>Complete rewiring</li>
+                  <li>Lighting solutions</li>
+                  <li>Troubleshooting and safety inspections</li>
+                  <li>EV charging station installation</li>
+                </ul>
+                <p>
+                  All work is carried out safely, according to regulations, and
+                  with a focus on long-term reliability.
+                </p>
+              </div>
+
+              <div class="service-right">
+                <img src="assets/service1.jpg" alt="" />
+              </div>
+            </div>
+
+            <!-- service 2 -->
+            <div class="flex reverse">
+              <div class="service-left flex flex-col justify-center">
+                <h1>AIR CONDITIONING SYSTEMS</h1>
+                <p>
+                  Installation of modern, energy-efficient air conditioning systems:
+                </p>
+                <ul>
+                  <li>Single split and multi-split systems</li>
+                  <li>Professional installation and placement</li>
+                  <li>Maintenance and optimization</li>
+                  <li>Replacement of older units</li>
+                  <li>A comfortable and efficiently cooled (or heated) home starts with the right system, installed with care and precision.</li>
+                </ul>
+              </div>
+
+              <div class="service-right">
+                <img src="assets/service2.jpg" alt="" />
+              </div>
+            </div>
+
+            <!-- HIdE services button -->
+            <div class="flex justify-center">
+              <button class="btn">Hide Services</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+  </body>
 </html>
