@@ -1,0 +1,87 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #fff;
+  --color-primary: #0b2c45;
+
+  --border-1: 1px;
+  --border-2: 2px;
+
+  --border-xs: 4px;
+  --border-sm: 6px;
+  --border-md: 10px;
+  --border-lg: 16px;
+  --border-xl: 24px;
+  --border-full: 9999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.125rem;
+  --font-xl: 1.375rem;
+  --font-2xl: 1.75rem;
+  --font-3xl: 2.25rem;
+  --font-4xl: 3rem;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.6;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--color-primary);
+}
+
+/* Navbar */
+nav {
+  width: 80%;
+  height: 60px;
+
+  margin: 20px 0px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  height: 100%;
+  background-color: aqua;
+}
+
+.nav-logo a img {
+  height: 100%;
+}
+
+.nav-menu ul {
+  background-color: blue;
+  display: flex;
+}
+
+/* UTILITY CLASSES */
+
+li {
+  list-style: none;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
