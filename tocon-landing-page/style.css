@@ -187,6 +187,72 @@ nav, .hero-section{
   flex-direction: row-reverse;
 }
 
+/* OUR RECENT WORK */
+.recent-work{
+  padding: var(--space-8);
+  background-color: #111;
+}
+
+.recent-work div>h1{
+  font-size: var(--font-4xl);
+  color: white;
+}
+
+.recent-work>div>p{
+  margin-bottom: var(--space-6);
+}
+
+.recent-work-cards{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+
+.recent-card{
+  background-color: #1a1a1a;
+  border-radius: var(--border-lg);
+  overflow: hidden;
+}
+
+.recent-card img{
+  height: 290px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.recent-card>div{
+  padding: var(--space-3) var(--space-5);
+  gap: var(--space-2);
+}
+
+/* CLIENT */
+.process {
+  padding: 80px 0;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.process-step span {
+  font-size: 34px;
+  font-weight: 700px;
+  color: #cce9f8;
+}
+
+.process-step h4 {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.process-step p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
 
 /* UTILITY CLASSES */
 
