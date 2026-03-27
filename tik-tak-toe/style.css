@@ -1,87 +1,153 @@
-/* GENERATE FROM AI */
-
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* BODY */
 body {
-  font-family: "Poppins", 'Arial Narrow Bold', sans-serif;
+  font-family: "Poppins", sans-serif;
   height: 100vh;
-  background: linear-gradient(135deg, #000c40, #000124);
+  background: radial-gradient(circle at top, #0f172a, #020617);
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #e2e8f0;
 }
 
+/* CONTAINER */
 .gameContainer {
-  background: #ffffff;
-  padding: 25px 30px;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  padding: 35px 40px; /* improved spacing */
+  border-radius: 18px;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.08);
+
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* consistent spacing */
 }
 
+/* GRID */
 #cellContainer {
   display: grid;
   grid-template-columns: repeat(3, 100px);
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 14px; /* slightly increased */
+  margin: 10px 0; /* balanced spacing */
 }
 
+/* MODE SELECTOR */
+.modeSelector {
+  display: flex;
+  justify-content: center;
+  gap: 12px; /* improved spacing */
+}
+
+/* BUTTON STYLE */
+.modeBtn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(30, 41, 59, 0.6);
+  color: #cbd5f5;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+/* HOVER */
+.modeBtn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+/* ACTIVE MODE */
+.modeBtn.active {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  color: white;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+}
+
+/* CELLS */
 .cell {
-  border: none;
-  background: #f4f4f4;
   width: 100px;
   height: 100px;
-  font-size: 70px;
+  font-size: 65px;
   font-weight: bold;
   cursor: pointer;
+
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px; /* slightly softer */
+
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 0.2s, transform 0.1s;
+
+  transition: all 0.25s ease;
+  color: #38bdf8;
 }
 
+/* HOVER EFFECT */
 .cell:hover {
-  background: #e0e0e0;
-  transform: scale(1.05);
+  background: rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+  transform: translateY(-3px) scale(1.05);
 }
 
+/* CLICK */
 .cell:active {
-  transform: scale(0.95);
+  transform: scale(0.92);
+}
+
+/* TEXTS */
+.turnText {
+  font-size: 18px;
+  color: #94a3b8;
 }
 
 .winText {
   font-size: 22px;
   font-weight: bold;
-  margin-bottom: 12px;
   min-height: 28px;
-  color: #333;
+  color: #22c55e;
 }
 
-.turnText{
-    font-size: larger;
-    margin-bottom: 10px;
+/* WIN + BUTTON GROUP */
+.gameContainer > div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px; /* clean spacing */
 }
 
+/* BUTTON */
 .restart {
-  padding: 10px 24px;
-  font-size: 16px;
+  padding: 12px 28px; /* improved */
+  font-size: 15px;
   font-weight: bold;
-  background: #667eea;
-  color: white;
-  border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
+  border: none;
+
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  color: white;
+
+  transition: all 0.25s ease;
 }
 
+/* BUTTON HOVER */
 .restart:hover {
-  background: #5a67d8;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  transform: translateY(-2px);
 }
 
+/* BUTTON CLICK */
 .restart:active {
   transform: scale(0.95);
 }

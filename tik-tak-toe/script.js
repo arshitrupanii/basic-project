@@ -2,9 +2,12 @@ const cell = document.querySelectorAll(".cell");
 const restart = document.querySelector(".restart");
 const winText = document.querySelector(".winText");
 const turnText = document.querySelector(".turnText");
+const modeButtons = document.querySelectorAll(".modeBtn");
 
 let board = ["", "", "", "", "", "", "", "", ""];
 let turn = "X";
+let gameMode = "friend";
+let gameOver = false;
 
 const winPro = [
     [0, 1, 2],
@@ -26,14 +29,17 @@ const checkWin = () => {
             board[a] === board[b] &&
             board[a] === board[c]
         ) {
-            winText.textContent = `${board[a]} Win 🎉 !!`
+            winText.textContent = `${board[a]} Win 🎉 !!`;
+            gameOver = true;
+            break;
         }
     }
-    
+
     const hasEmpty = board.some(item => item === "");
     !hasEmpty ? winText.textContent = `Draw !!` : '';
 };
 
+// dom manipulation 
 const DisplayBoard = () => {
     let i = 0;
 
@@ -42,7 +48,9 @@ const DisplayBoard = () => {
     });
 };
 
-const addMove = (target) => {
+// that function fill X O in block
+const Move = (target) => {
+    // check fill if filled then return nothing
     if (board[target] !== "") return;
 
     if (turn == "O") {
@@ -55,14 +63,33 @@ const addMove = (target) => {
     turnText.textContent = `Turn : ${turn}`
 };
 
+// computer move
+const computerMove = () => {
+    let emptyBoard = []
+
+    // it store empty cell
+    for (let i = 0; i < board.length; i++) {
+        if(board[i].trim() === "") emptyBoard.push(i);
+    }
+
+    const randomIndex = Math.floor(Math.random() * emptyBoard.length);
+    Move(emptyBoard[randomIndex]);
+}
+
+// -----------Start-----------
+
 cell.forEach((ele) => {
     ele.addEventListener("click", (e) => {
         let target = e.target.dataset.cellIndex;
 
-        addMove(target);
-
-        DisplayBoard();
-        checkWin();
+        if(!gameOver){
+            Move(target);
+    
+            if(gameMode == 'computer') computerMove();
+    
+            DisplayBoard();
+            checkWin();
+        }
     });
 });
 
@@ -71,4 +98,17 @@ restart.addEventListener("click", () => {
     winText.textContent = "";
 
     DisplayBoard();
+});
+
+modeButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    // remove active from all
+    modeButtons.forEach(a => a.classList.remove("active"));
+
+    // add active to clicked
+    btn.classList.add("active");
+
+    // set mode
+    gameMode = btn.dataset.mode;
+  });
 });
