@@ -272,15 +272,13 @@ function buildFilterString() {
 }
 
 function applyAllFilters() {
+    // clear canvas first
     canvasCTX.clearRect(0, 0, Imagecanvas.width, Imagecanvas.height);
 
     canvasCTX.globalAlpha = filters.opacity.value / 100;
     canvasCTX.filter = buildFilterString();
 
     canvasCTX.drawImage(img, 0, 0);
-
-    canvasCTX.globalAlpha = 1;
-    canvasCTX.filter = "none";
 }
 
 // it add button into preset dom
