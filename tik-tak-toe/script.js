@@ -35,45 +35,48 @@ const checkWin = () => {
         }
     }
 
-    const hasEmpty = board.some(item => item === "");
-    !hasEmpty ? winText.textContent = `Draw !!` : '';
+    if (!board.includes("") && !gameOver) {
+        winText.textContent = "Draw 🤝";
+        gameOver = true;
+    }
 };
 
 // dom manipulation 
 const DisplayBoard = () => {
-    let i = 0;
-
-    cell.forEach((ele) => {
-        ele.textContent = board[i++];
+    cell.forEach((ele, i) => {
+        ele.textContent = board[i];
     });
 };
 
 // that function fill X O in block
 const Move = (target) => {
     // check fill if filled then return nothing
-    if (board[target] !== "") return;
+    if (board[target] !== "" || gameOver) return;
 
-    if (turn == "O") {
-        board[target] = "O";
-        turn = "X";
-    } else if (turn == "X") {
-        board[target] = "X";
-        turn = "O";
-    }
+    board[target] = turn;
+    turn = turn === "X" ? "O" : "X";
+
     turnText.textContent = `Turn : ${turn}`
 };
 
 // computer move
 const computerMove = () => {
-    let emptyBoard = []
+    if (gameOver) return;
 
-    // it store empty cell
-    for (let i = 0; i < board.length; i++) {
-        if(board[i].trim() === "") emptyBoard.push(i);
-    }
+    let empty = board
+        .map((val, i) => val === "" ? i : null)
+        .filter(v => v !== null);
 
-    const randomIndex = Math.floor(Math.random() * emptyBoard.length);
-    Move(emptyBoard[randomIndex]);
+    if (empty.length === 0) return;
+
+    let randomIndex = empty[Math.floor(Math.random() * empty.length)];
+
+    // delay = more natural
+    setTimeout(() => {
+        Move(randomIndex);
+        DisplayBoard();
+        checkWin();
+    }, 400);
 }
 
 // -----------Start-----------
@@ -82,33 +85,38 @@ cell.forEach((ele) => {
     ele.addEventListener("click", (e) => {
         let target = e.target.dataset.cellIndex;
 
-        if(!gameOver){
-            Move(target);
-    
-            if(gameMode == 'computer') computerMove();
-    
-            DisplayBoard();
-            checkWin();
+        if (gameOver) return;
+
+        Move(target);
+        DisplayBoard();
+        checkWin();
+
+        if (gameMode === "computer" && turn === "O" && !gameOver) {
+            computerMove();
         }
     });
 });
 
 restart.addEventListener("click", () => {
     board = ["", "", "", "", "", "", "", "", ""];
+    turn = "X";
     winText.textContent = "";
+    gameOver = false;
 
+    turnText.textContent = `Turn : ${turn}`
     DisplayBoard();
 });
 
 modeButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    // remove active from all
-    modeButtons.forEach(a => a.classList.remove("active"));
+    btn.addEventListener("click", () => {
+        // remove active from all
+        modeButtons.forEach(a => a.classList.remove("active"));
 
-    // add active to clicked
-    btn.classList.add("active");
+        // add active to clicked
+        btn.classList.add("active");
 
-    // set mode
-    gameMode = btn.dataset.mode;
-  });
+        // set mode
+        gameMode = btn.dataset.mode;
+        restart.click();
+    });
 });
