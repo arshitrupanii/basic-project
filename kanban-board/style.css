@@ -8,8 +8,18 @@ html,
 body {
   width: 100%;
   height: 100%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 
 :root {
@@ -157,7 +167,8 @@ main {
   gap: 20px;
 }
 
-.new-task-form div input, textarea{
+.new-task-form div input,
+textarea {
   background-color: transparent;
   border: 1px solid gray;
   color: white;
@@ -184,4 +195,70 @@ main {
 
 .cursor-grab {
   cursor: grab;
+}
+
+/* Responsive Design */
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  main {
+    padding: var(--p-md);
+    gap: var(--p-md);
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: var(--p-md);
+    align-items: stretch;
+  }
+
+  .add-btn {
+    width: 100%;
+    padding: var(--p-lg);
+    font-size: medium;
+  }
+
+  .board {
+    flex-direction: column;
+    gap: var(--p-md);
+  }
+
+  .tasks-cols {
+    min-height: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .new-task-form {
+    padding: var(--p-lg);
+    width: 90vw;
+    max-width: 400px;
+  }
+
+  .new-task-form div {
+    flex-direction: column;
+    gap: var(--p-md);
+  }
+
+  .new-task-form div input,
+  .new-task-form div textarea {
+    font-size: small;
+  }
+
+  #add-Submit {
+    font-size: medium;
+    padding: var(--p-md);
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1000px) {
+  .board {
+    flex-direction: column;
+    gap: var(--p-lg);
+  }
+
+  .tasks-cols {
+    min-height: 400px;
+  }
 }
