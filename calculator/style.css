@@ -15,16 +15,15 @@
 
 .calculator {
   border: 2px solid rgb(128, 128, 128, 0.4);
-  width: 500px;
-  height: 700px;
+  width: 400px;
+  height: auto;
   border-radius: 25px;
+  padding: 40px;
 }
 
 .screen {
-  margin-left: 65px;
   margin-top: 35%;
   margin-bottom: 30px;
-  margin-right: 50px;
   
   min-height: 52px;
   overflow: hidden;
@@ -41,9 +40,8 @@
 
 .btn-row {
   display: flex;
-  width: 80%;
-  margin: auto;
-  gap: 40px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .btn {
